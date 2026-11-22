@@ -1,0 +1,10 @@
+#!name=Spotify 广告位过滤
+#!desc=过滤 Spotify 的首页广告位 hpto、歌曲间广告位 stream 和 POST /ad-logic/prefetch 广告预取请求。
+
+[MITM]
+hostname = %APPEND% spclient.wg.spotify.com, *-spclient.spotify.com
+
+[Script]
+SpotifyAudioAd-Prefetch = type=http-request,pattern=^https://(?:spclient\.wg|[a-z0-9-]+-spclient)\.spotify\.com(?::443)?/ad-logic/prefetch/?(?:\?|$),script-path=https://raw.githubusercontent.com/echo66677/rules/master/js/spotify-desktop-home-ad.js
+SpotifyDesktopHomeAd-Config = type=http-response,pattern=^https://(?:spclient\.wg|[a-z0-9-]+-spclient)\.spotify\.com(?::443)?/ads/v2/config(?:\?|$),requires-body=true,script-path=https://raw.githubusercontent.com/echo66677/rules/master/js/spotify-desktop-home-ad.js
+SpotifyDesktopHomeAd-Slots = type=http-request,pattern=^https://(?:spclient\.wg|[a-z0-9-]+-spclient)\.spotify\.com(?::443)?/ads/v[0-9]+/ads\?(?:[^&#]*&)*slots=(?:[^&#]*(?:\x2c|%2[cC]))?(?:hpto|stream)(?:$|&|\x2c|%2[cC]),script-path=https://raw.githubusercontent.com/echo66677/rules/master/js/spotify-desktop-home-ad.js

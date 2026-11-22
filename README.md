@@ -33,6 +33,12 @@ qx去广告无效的解决办法:
 | qx | Rewrite:https://raw.githubusercontent.com/app2smile/rules/master/module/spotify.conf |
 
 
+### Spotify 广告位过滤（Surge Mac / iOS）
+
+过滤首页广告位（`hpto`）、歌曲间广告位（`stream`）和广告预取请求。
+
+通过 URL 安装 [Surge 模块](https://raw.githubusercontent.com/echo66677/rules/master/module/SpotifyAdSlots.sgmodule)。更新匹配规则请编辑 [模块](module/SpotifyAdSlots.sgmodule)，更新过滤逻辑请编辑 [脚本](js/spotify-desktop-home-ad.js)。
+
 ## Spotify歌词翻译
 > https://raw.githubusercontent.com/app2smile/rules/master/js/spotify-lyric.js
 
